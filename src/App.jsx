@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./Header.jsx";
 import ToDoLists from "./ToDoLists.jsx";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function App() {
   // const [Lists, setLists] = useState({
