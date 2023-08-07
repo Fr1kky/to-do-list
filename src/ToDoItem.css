@@ -12,9 +12,10 @@ li {
 }
 
 .li-wrapper {
-  background-color: #6bba62;
-  border: 3px solid #42476d;
-  color: #42476d;
+  background-color: #add2c9;
+
+  border: 3px solid #488b8f;
+  color: #488b8f;
   font-weight: 600;
   border-radius: 1rem;
   padding: 0.5rem;
@@ -23,6 +24,7 @@ li {
   overflow-wrap: break-word;
   max-width: 15rem;
   min-width: 15rem;
+  min-height: 4rem;
   margin-top: 1rem;
   align-items: center;
 }
@@ -36,6 +38,7 @@ li {
 
 .todo {
   text-decoration: none;
+  margin: 0;
 }
 
 .strike {
@@ -48,4 +51,8 @@ li {
 
 .edit-input {
   max-width: 10em;
+}
+
+.none {
+  display: none;
 }

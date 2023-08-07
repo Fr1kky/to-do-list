@@ -12,6 +12,8 @@ function ToDoItem({
   const [deleteStatus, setDeleteStatus] = useState(false);
   const [editingStatus, setEditingStatus] = useState("nothing");
   const [userInput, setUserInput] = useState(todo.task);
+  // const [preEditText, setPreEditText] = useState(todo.task);
+  let preEditText = todo.task;
 
   //Check as done/undone
   const clickDoneHendler = () => {
@@ -46,6 +48,14 @@ function ToDoItem({
     }
   };
 
+  //Сancel edit
+  const canselHendler = () => {
+    setEditingStatus("nothing");
+    handleEdit(todo.id, preEditText);
+    setUserInput(preEditText);
+    handleRebuilder();
+  };
+
   return (
     <div className="li-wrapper">
       {editingStatus === "nothing" ? (
@@ -68,7 +78,10 @@ function ToDoItem({
       )}
       <div className="li-btn-wrapper">
         <div
-          className="done-btn btn"
+          className={
+            editingStatus === "editing" ? "done-btn btn none" : "done-btn btn"
+          }
+          // className="done-btn btn"
           id="doneBtn"
           name="doneBtn"
           onClick={() => {
@@ -83,10 +96,25 @@ function ToDoItem({
           name="editBtn"
           onClick={clickEditHendler}
         >
-          Edit
+          {editingStatus === "editing" ? "Save" : "Edit"}
         </div>
+        {editingStatus === "editing" ? (
+          <div
+            className="edit-btn btn"
+            id="editBtn"
+            name="editBtn"
+            onClick={canselHendler}
+          >
+            Cansel
+          </div>
+        ) : null}
         <div
-          className="delete-btn btn"
+          // className="delete-btn btn"
+          className={
+            editingStatus === "editing"
+              ? "delete-btn btn none"
+              : "delete-btn btn"
+          }
           id="deleteBtn"
           name="deleteBtn"
           onClick={clickDeleteHendler}

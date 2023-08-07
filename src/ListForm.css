@@ -7,7 +7,7 @@
 .btn-submit {
   cursor: pointer;
   font-weight: 600;
-  color: #42476d;
+  color: #488b8f;
   padding: 0.5rem 1rem;
 }
 
@@ -16,11 +16,11 @@ input:focus-visible {
 }
 
 input {
-  background-color: #6bba62;
-  border: 3px solid #42476d;
+  background-color: #add2c9;
+  border: 3px solid #488b8f;
   border-radius: 1rem;
   margin-right: 0.5rem;
-  color: #42476d;
+  color: #488b8f;
   font-weight: 600;
   text-align: center;
 }
