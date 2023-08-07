@@ -70,11 +70,11 @@ function ToDoItem({
           </span>
         </li>
       ) : (
-        <input
-          className="edit-input"
+        <textarea
+          className="edit-textarea"
           onChange={handleChange}
           value={userInput}
-        ></input>
+        ></textarea>
       )}
       <div className="li-btn-wrapper">
         <div

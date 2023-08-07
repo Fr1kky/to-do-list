@@ -12,10 +12,10 @@ li {
 }
 
 .li-wrapper {
-  background-color: #add2c9;
+  background-color: #d8f0ea;
 
-  border: 3px solid #488b8f;
-  color: #488b8f;
+  border: 3px solid #3d777a;
+  color: #3d777a;
   font-weight: 600;
   border-radius: 1rem;
   padding: 0.5rem;
@@ -49,8 +49,10 @@ li {
   cursor: pointer;
 }
 
-.edit-input {
+.edit-textarea {
   max-width: 10em;
+  padding: 0.5 0.2rem;
+  resize: none;
 }
 
 .none {

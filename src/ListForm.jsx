@@ -17,14 +17,17 @@ const ListForm = ({ addTask, handleAdding }) => {
 
   return (
     <form className="list-form">
-      <input
+      <textarea
         type="text"
         name="work-with-task"
         id="work-with-task"
         className="work-with-task"
         autoComplete="off"
+        placeholder="Type new task here"
         value={userInput}
         onChange={handleChange}
+        rows={3}
+        cols={19}
       />
       <div
         className="btn-submit"
