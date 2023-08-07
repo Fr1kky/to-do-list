@@ -17,7 +17,6 @@ const ToDoLists = ({
 
   useEffect(() => {
     localStorage.setItem("Lists", JSON.stringify(Lists));
-    console.log(localStorage);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Lists.list1]);

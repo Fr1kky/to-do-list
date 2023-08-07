@@ -14,8 +14,7 @@ function App() {
   // localStorage.clear();
   let newId;
   let storedLists = JSON.parse(localStorage.getItem("Lists"));
-  console.log(storedLists);
-  if (storedLists.list1.length === 0) {
+  if (storedLists === null || storedLists.list1.length === 0) {
     storedLists = {
       list1: [{ id: 1, task: "Task 1", complete: false }],
     };
@@ -23,13 +22,10 @@ function App() {
   }
 
   const [Lists, setLists] = useState(storedLists);
-  console.log(Lists);
   newId = Lists.list1[Lists.list1.length - 1].id;
 
   const addTask = (userInput) => {
     let copy = [...Lists.list1];
-    console.log(Lists.list1[Lists.list1.length - 1].id + 1);
-    console.log(Lists.list1.length);
     Lists.list1 = [
       ...copy,
       {
