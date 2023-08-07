@@ -45,3 +45,7 @@ li {
 .btn {
   cursor: pointer;
 }
+
+.edit-input {
+  max-width: 10em;
+}

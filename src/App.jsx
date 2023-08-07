@@ -22,14 +22,27 @@ function App() {
   };
 
   const handleToggle = (id, status) => {
-    let temp = Lists.list1.map((task) => {
+    let tempList = Lists.list1.map((task) => {
       return task.id === Number(id)
         ? { ...task, complete: status }
         : { ...task };
     });
-    Lists.list1 = temp;
-    console.log(temp);
-    console.log(Lists);
+    Lists.list1 = tempList;
+    setLists(Lists);
+  };
+
+  const handleDelet = (id) => {
+    let tempList = Lists.list1.filter((task) => task.id !== id);
+    Lists.list1 = tempList;
+    setLists(Lists);
+  };
+
+  const handleEdit = (id, taskText) => {
+    let tempList = Lists.list1.map((task) => {
+      return task.id === Number(id) ? { ...task, task: taskText } : { ...task };
+    });
+    Lists.list1 = tempList;
+    console.log(tempList);
     setLists(Lists);
   };
 
@@ -42,6 +55,8 @@ function App() {
           setLists={setLists}
           addTask={addTask}
           handleToggle={handleToggle}
+          handleDelet={handleDelet}
+          handleEdit={handleEdit}
         />
       </div>
     </div>

@@ -3,7 +3,13 @@ import ToDoItem from "./ToDoItem.jsx";
 import ListForm from "./ListForm.jsx";
 import React, { useState } from "react";
 
-const ToDoLists = ({ Lists, addTask, handleToggle }) => {
+const ToDoLists = ({
+  Lists,
+  addTask,
+  handleToggle,
+  handleDelet,
+  handleEdit,
+}) => {
   const [rebuilder, setrebuilder] = useState(1);
   const handleRebuilder = () => {
     setrebuilder(!rebuilder);
@@ -21,8 +27,10 @@ const ToDoLists = ({ Lists, addTask, handleToggle }) => {
               <ToDoItem
                 key={todo.id}
                 todo={todo}
-                handleToggle={handleToggle}
                 handleRebuilder={handleRebuilder}
+                handleToggle={handleToggle}
+                handleDelet={handleDelet}
+                handleEdit={handleEdit}
               />
             );
           })}
