@@ -13,15 +13,15 @@ function ToDoItem({ todo }) {
         <span className="li-text">{todo.task}</span>
       </li>
       <div className="li-btn-wrapper">
-        <button className="done-btn" id="doneBtn" name="doneBtn">
+        <div className="done-btn btn" id="doneBtn" name="doneBtn">
           Done
-        </button>
-        <button className="edit-btn" id="editBtn" name="editBtn">
+        </div>
+        <div className="edit-btn btn" id="editBtn" name="editBtn">
           Edit
-        </button>
-        <button className="delete-btn" id="deleteBtn" name="deleteBtn">
+        </div>
+        <div className="delete-btn btn" id="deleteBtn" name="deleteBtn">
           Delete
-        </button>
+        </div>
       </div>
     </div>
   );

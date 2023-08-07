@@ -3,3 +3,24 @@
   display: flex;
   /* justify-content: space-around; */
 }
+
+.btn-submit {
+  cursor: pointer;
+  font-weight: 600;
+  color: #42476d;
+  padding: 0.5rem 1rem;
+}
+
+input:focus-visible {
+  outline: -webkit-focus-ring-color auto 0px;
+}
+
+input {
+  background-color: #6bba62;
+  border: 3px solid #42476d;
+  border-radius: 1rem;
+  margin-right: 0.5rem;
+  color: #42476d;
+  font-weight: 600;
+  text-align: center;
+}

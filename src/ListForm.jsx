@@ -16,16 +16,19 @@ const ListForm = ({ addTask, handleAdding }) => {
   };
 
   return (
-    <form className="list-form" onSubmit={handleSubmit}>
+    <form className="list-form">
       <input
         type="text"
         name="work-with-task"
         id="work-with-task"
         className="work-with-task"
+        autocomplete="off"
         value={userInput}
         onChange={handleChange}
       />
-      <button className="btn-submit">Submit</button>
+      <div className="btn-submit" onClick={handleSubmit}>
+        Submit
+      </div>
     </form>
   );
 };

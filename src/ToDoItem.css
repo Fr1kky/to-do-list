@@ -12,7 +12,10 @@ li {
 }
 
 .li-wrapper {
-  border: 1px solid black;
+  background-color: #6bba62;
+  border: 3px solid #42476d;
+  color: #42476d;
+  font-weight: 600;
   border-radius: 1rem;
   padding: 0.5rem;
   display: flex;
@@ -22,10 +25,6 @@ li {
   min-width: 15rem;
   margin-top: 1rem;
   align-items: center;
-}
-
-li > button {
-  margin-left: 0.5rem;
 }
 
 .li-btn-wrapper {
@@ -41,4 +40,8 @@ li > button {
 
 .striled {
   text-decoration: line-through;
+}
+
+.btn {
+  cursor: pointer;
 }
