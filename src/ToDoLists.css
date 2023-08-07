@@ -1,0 +1,21 @@
+.todo-list-wrapepr {
+  /* border: 1px solid black; */
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  width: 16em;
+  max-width: 20em;
+  margin-top: 0;
+}
