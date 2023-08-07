@@ -22,7 +22,7 @@ const ListForm = ({ addTask, handleAdding }) => {
         name="work-with-task"
         id="work-with-task"
         className="work-with-task"
-        autocomplete="off"
+        autoComplete="off"
         value={userInput}
         onChange={handleChange}
       />

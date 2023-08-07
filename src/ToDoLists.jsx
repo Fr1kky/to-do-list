@@ -3,12 +3,10 @@ import ToDoItem from "./ToDoItem.jsx";
 import ListForm from "./ListForm.jsx";
 import React, { useState } from "react";
 
-const ToDoLists = ({ Lists, addTask }) => {
-  // const [userInput, setUserInput] = useState("");
-  const [adding, setAdding] = useState(1);
-
-  const handleAdding = () => {
-    setAdding(!adding);
+const ToDoLists = ({ Lists, addTask, handleToggle }) => {
+  const [rebuilder, setrebuilder] = useState(1);
+  const handleRebuilder = () => {
+    setrebuilder(!rebuilder);
   };
 
   console.log("im hereeee");
@@ -19,10 +17,17 @@ const ToDoLists = ({ Lists, addTask }) => {
         {Lists.list1
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((todo) => {
-            return <ToDoItem key={todo.id} todo={todo} />;
+            return (
+              <ToDoItem
+                key={todo.id}
+                todo={todo}
+                handleToggle={handleToggle}
+                handleRebuilder={handleRebuilder}
+              />
+            );
           })}
       </ul>
-      <ListForm addTask={addTask} handleAdding={handleAdding} />
+      <ListForm addTask={addTask} handleAdding={handleRebuilder} />
     </div>
   );
 };

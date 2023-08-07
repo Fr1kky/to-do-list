@@ -21,11 +21,28 @@ function App() {
     setLists(Lists);
   };
 
+  const handleToggle = (id, status) => {
+    let temp = Lists.list1.map((task) => {
+      return task.id === Number(id)
+        ? { ...task, complete: status }
+        : { ...task };
+    });
+    Lists.list1 = temp;
+    console.log(temp);
+    console.log(Lists);
+    setLists(Lists);
+  };
+
   return (
     <div className="App">
       <Header />
       <div className="todo-lists-wrapepr">
-        <ToDoLists Lists={Lists} setLists={setLists} addTask={addTask} />
+        <ToDoLists
+          Lists={Lists}
+          setLists={setLists}
+          addTask={addTask}
+          handleToggle={handleToggle}
+        />
       </div>
     </div>
   );
