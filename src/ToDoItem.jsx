@@ -39,9 +39,11 @@ function ToDoItem({
       console.log("kek");
       setEditingStatus("editing");
     } else if (editingStatus === "editing") {
-      setEditingStatus("nothing");
-      handleEdit(todo.id, userInput);
-      handleRebuilder();
+      if (userInput.length !== 0) {
+        setEditingStatus("nothing");
+        handleEdit(todo.id, userInput);
+        handleRebuilder();
+      }
     }
   };
 

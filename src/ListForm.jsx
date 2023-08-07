@@ -26,7 +26,10 @@ const ListForm = ({ addTask, handleAdding }) => {
         value={userInput}
         onChange={handleChange}
       />
-      <div className="btn-submit" onClick={handleSubmit}>
+      <div
+        className="btn-submit"
+        onClick={userInput.length !== 0 ? handleSubmit : () => {}}
+      >
         Submit
       </div>
     </form>
