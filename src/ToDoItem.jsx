@@ -36,7 +36,6 @@ function ToDoItem({
 
   const clickEditHendler = () => {
     if (editingStatus === "nothing") {
-      console.log("kek");
       setEditingStatus("editing");
     } else if (editingStatus === "editing") {
       if (userInput.length !== 0) {

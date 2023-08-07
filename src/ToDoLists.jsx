@@ -1,7 +1,7 @@
 import "./ToDoLists.css";
 import ToDoItem from "./ToDoItem.jsx";
 import ListForm from "./ListForm.jsx";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ToDoLists = ({
   Lists,
@@ -15,7 +15,10 @@ const ToDoLists = ({
     setrebuilder(!rebuilder);
   };
 
-  console.log("im hereeee");
+  useEffect(() => {
+    localStorage.setItem("Lists", JSON.stringify(Lists));
+    console.log(localStorage);
+  }, [Lists.list1]);
 
   return (
     <div className="todo-list-wrapepr">
@@ -25,7 +28,7 @@ const ToDoLists = ({
           .map((todo) => {
             return (
               <ToDoItem
-                key={todo.id}
+                key={todo.id + todo.task}
                 todo={todo}
                 handleRebuilder={handleRebuilder}
                 handleToggle={handleToggle}
