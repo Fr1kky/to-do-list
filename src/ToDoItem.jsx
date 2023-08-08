@@ -7,6 +7,7 @@ function ToDoItem({
   handleRebuilder,
   handleDelet,
   handleEdit,
+  listTitle,
 }) {
   const [doneStatus, setDoneStatus] = useState(todo.complete);
   const [deleteStatus, setDeleteStatus] = useState(false);
@@ -18,7 +19,7 @@ function ToDoItem({
   //Check as done/undone
   const clickDoneHendler = () => {
     doneStatus === true ? setDoneStatus(false) : setDoneStatus(true);
-    handleToggle(todo.id, !doneStatus);
+    handleToggle(todo.id, !doneStatus, listTitle);
     handleRebuilder();
   };
 
@@ -27,7 +28,7 @@ function ToDoItem({
     if (deleteStatus === false) {
       setDeleteStatus(true);
     }
-    handleDelet(todo.id);
+    handleDelet(todo.id, listTitle);
     handleRebuilder();
   };
 
@@ -42,7 +43,7 @@ function ToDoItem({
     } else if (editingStatus === "editing") {
       if (userInput.length !== 0) {
         setEditingStatus("nothing");
-        handleEdit(todo.id, userInput);
+        handleEdit(todo.id, userInput, listTitle);
         handleRebuilder();
       }
     }
@@ -51,7 +52,7 @@ function ToDoItem({
   //Сancel edit
   const canselHendler = () => {
     setEditingStatus("nothing");
-    handleEdit(todo.id, preEditText);
+    handleEdit(todo.id, preEditText, listTitle);
     setUserInput(preEditText);
     handleRebuilder();
   };

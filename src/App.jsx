@@ -4,77 +4,79 @@ import ToDoLists from "./ToDoLists.jsx";
 import React, { useState } from "react";
 
 function App() {
-  // const [Lists, setLists] = useState({
-  //   list1: [
-  //     { id: 2, task: "Task 2", complete: false },
-  //     { id: 1, task: "Task 1", complete: false },
-  //   ],
-  // });
-
   // localStorage.clear();
-  let newId;
   let storedLists = JSON.parse(localStorage.getItem("Lists"));
-  if (storedLists === null || storedLists.list1.length === 0) {
+  if (storedLists === null || storedLists.listsTitles.length === 0) {
     storedLists = {
+      listsTitles: ["list1", "list2"],
       list1: [{ id: 1, task: "Task 1", complete: false }],
+      list2: [{ id: 2, task: "Task 1", complete: false }],
+      nextTaskId: 3,
     };
-    newId = storedLists.list1[0].id;
   }
 
   const [Lists, setLists] = useState(storedLists);
-  newId = Lists.list1[Lists.list1.length - 1].id;
 
-  const addTask = (userInput) => {
-    let copy = [...Lists.list1];
-    Lists.list1 = [
+  const addTask = (userInput, listTitle) => {
+    let copy = [...Lists[listTitle]];
+    Lists[listTitle] = [
       ...copy,
       {
-        id: newId + 1,
+        id: Lists.nextTaskId,
         task: userInput,
         complete: false,
       },
     ];
-    newId = newId + 1;
-    setLists(Lists);
+    Lists.nextTaskId = Lists.nextTaskId + 1;
+    console.log(Lists);
   };
 
-  const handleToggle = (id, status) => {
-    let tempList = Lists.list1.map((task) => {
+  const handleToggle = (id, status, listTitle) => {
+    let tempList = Lists[listTitle].map((task) => {
       return task.id === Number(id)
         ? { ...task, complete: status }
         : { ...task };
     });
-    Lists.list1 = tempList;
+    Lists[listTitle] = tempList;
     setLists(Lists);
   };
 
-  const handleDelet = (id) => {
-    let tempList = Lists.list1.filter((task) => task.id !== id);
-    Lists.list1 = tempList;
+  const handleDelet = (id, listTitle) => {
+    let tempList = Lists[listTitle].filter((task) => task.id !== id);
+    Lists[listTitle] = tempList;
     setLists(Lists);
   };
 
-  const handleEdit = (id, taskText) => {
-    let tempList = Lists.list1.map((task) => {
+  const handleEdit = (id, taskText, listTitle) => {
+    let tempList = Lists[listTitle].map((task) => {
       return task.id === Number(id) ? { ...task, task: taskText } : { ...task };
     });
-    Lists.list1 = tempList;
+    Lists[listTitle] = tempList;
     setLists(Lists);
   };
 
   return (
     <div className="App">
       <Header />
-      <div className="todo-lists-wrapepr">
-        <ToDoLists
-          Lists={Lists}
-          setLists={setLists}
-          addTask={addTask}
-          handleToggle={handleToggle}
-          handleDelet={handleDelet}
-          handleEdit={handleEdit}
-        />
-      </div>
+      <section className="todo-lists-wrapepr">
+        {Lists.listsTitles.map((listTitle, index) => (
+          <ToDoLists
+            key={index + Math.random()}
+            Lists={Lists}
+            listTitle={listTitle}
+            setLists={setLists}
+            addTask={addTask}
+            handleToggle={handleToggle}
+            handleDelet={handleDelet}
+            handleEdit={handleEdit}
+          />
+        ))}
+
+        {/* <div className="adding-list-wrapper"></div> */}
+        <div className="add-list-btn-wrapper">
+          <div className="add-list-btn">Add new list</div>
+        </div>
+      </section>
     </div>
   );
 }

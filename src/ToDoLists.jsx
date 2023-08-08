@@ -9,6 +9,7 @@ const ToDoLists = ({
   handleToggle,
   handleDelet,
   handleEdit,
+  listTitle,
 }) => {
   const [rebuilder, setrebuilder] = useState(1);
   const handleRebuilder = () => {
@@ -23,23 +24,32 @@ const ToDoLists = ({
 
   return (
     <div className="todo-list-wrapepr">
+      <div className="list-header-wrapper">
+        <h3 className="list-title">{listTitle}</h3>
+        <div className="list-menu-btn">•••</div>
+      </div>
       <ul className="todo-list">
-        {Lists.list1
+        {Lists[listTitle]
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((todo) => {
             return (
               <ToDoItem
-                key={todo.id + todo.task}
+                key={todo.id + Math.random()}
                 todo={todo}
                 handleRebuilder={handleRebuilder}
                 handleToggle={handleToggle}
                 handleDelet={handleDelet}
                 handleEdit={handleEdit}
+                listTitle={listTitle}
               />
             );
           })}
       </ul>
-      <ListForm addTask={addTask} handleAdding={handleRebuilder} />
+      <ListForm
+        addTask={addTask}
+        handleAdding={handleRebuilder}
+        listTitle={listTitle}
+      />
     </div>
   );
 };
