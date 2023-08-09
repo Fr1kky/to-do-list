@@ -8,7 +8,7 @@ function App() {
   // localStorage.clear();
 
   let storedLists = JSON.parse(localStorage.getItem("Lists"));
-  if (storedLists === null || storedLists.lists.length === 0) {
+  if (storedLists === null) {
     storedLists = {
       lists: [],
       nextTaskId: 3,
