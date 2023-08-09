@@ -1,10 +1,11 @@
 import "./App.css";
 import Header from "./Header.jsx";
 import ToDoLists from "./ToDoLists.jsx";
+import AddList from "./AddList";
 import React, { useState } from "react";
 
 function App() {
-  // localStorage.clear();
+  localStorage.clear();
   let storedLists = JSON.parse(localStorage.getItem("Lists"));
   if (storedLists === null || storedLists.listsTitles.length === 0) {
     storedLists = {
@@ -28,7 +29,8 @@ function App() {
       },
     ];
     Lists.nextTaskId = Lists.nextTaskId + 1;
-    console.log(Lists);
+
+    setLists(Lists);
   };
 
   const handleToggle = (id, status, listTitle) => {
@@ -55,6 +57,25 @@ function App() {
     setLists(Lists);
   };
 
+  const addList = (listTitle) => {
+    Lists[listTitle] = [];
+    Lists.listsTitles = [...Lists.listsTitles, listTitle];
+    setLists(Lists);
+    console.log(Lists);
+  };
+
+  // const removeList = (listTitle) => {
+  //   delete Lists[listTitle];
+  //   setLists(Lists);
+  //   console.log(Lists);
+  // };
+
+  const [rebuilder, setRebuilder] = useState(1);
+
+  const handleRebuilder = () => {
+    setRebuilder(!rebuilder);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -71,11 +92,8 @@ function App() {
             handleEdit={handleEdit}
           />
         ))}
-
         {/* <div className="adding-list-wrapper"></div> */}
-        <div className="add-list-btn-wrapper">
-          <div className="add-list-btn">Add new list</div>
-        </div>
+        <AddList addList={addList} handleRebuilder={handleRebuilder} />
       </section>
     </div>
   );

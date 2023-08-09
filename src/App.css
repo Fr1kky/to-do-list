@@ -10,6 +10,9 @@
   align-items: flex-start;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   height: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
 }
 
 /* ///// */
@@ -46,19 +49,3 @@
   opacity: 1;
 }
 /* /////// */
-
-.add-list-btn-wrapper {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  padding: 1rem;
-  width: 10rem;
-  text-align: center;
-}
-
-.add-list-btn {
-  padding: 0.3rem 0.5rem 0.3rem;
-  color: #3d777a;
-  font-weight: 600;
-  border: 2px solid #488b8f;
-  background-color: #d8f0ea;
-  border-radius: 0.4rem;
-}
