@@ -1,7 +1,7 @@
 import "./ListForm.css";
 import React, { useState } from "react";
 
-const ListForm = ({ addTask, handleAdding, listTitle }) => {
+const ListForm = ({ addTask, handleAdding, listIndex }) => {
   const [userInput, setUserInput] = useState("");
 
   const handleChange = (e) => {
@@ -10,7 +10,7 @@ const ListForm = ({ addTask, handleAdding, listTitle }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(userInput, listTitle);
+    addTask(userInput, listIndex);
     setUserInput("");
     handleAdding();
   };

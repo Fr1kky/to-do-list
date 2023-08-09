@@ -1,15 +1,19 @@
 import "./ToDoLists.css";
 import ToDoItem from "./ToDoItem.jsx";
 import ListForm from "./ListForm.jsx";
+import DropDownTaskList from "./DropDownTaskList.jsx";
 import React, { useState, useEffect } from "react";
 
 const ToDoLists = ({
   Lists,
+  listTitle,
+  listIndex,
   addTask,
   handleToggle,
   handleDelet,
   handleEdit,
-  listTitle,
+  removeList,
+  listId,
 }) => {
   const [rebuilder, setrebuilder] = useState(1);
   const handleRebuilder = () => {
@@ -20,35 +24,43 @@ const ToDoLists = ({
     localStorage.setItem("Lists", JSON.stringify(Lists));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Lists.list1]);
+  }, [Lists.lists[listIndex].tasks]);
 
   return (
     <div className="todo-list-wrapepr">
       <div className="list-header-wrapper">
         <h3 className="list-title">{listTitle}</h3>
-        <div className="list-menu-btn">•••</div>
+        <div className="list-menu-btn">
+          •••
+          <DropDownTaskList
+            listId={listId}
+            handleRebuilder={handleRebuilder}
+            removeList={removeList}
+          />
+        </div>
       </div>
       <ul className="todo-list">
-        {Lists[listTitle]
-          .sort((a, b) => (a.id > b.id ? 1 : -1))
-          .map((todo) => {
-            return (
-              <ToDoItem
-                key={todo.id + Math.random()}
-                todo={todo}
-                handleRebuilder={handleRebuilder}
-                handleToggle={handleToggle}
-                handleDelet={handleDelet}
-                handleEdit={handleEdit}
-                listTitle={listTitle}
-              />
-            );
-          })}
+        {Lists.lists.length !== 0 &&
+          Lists.lists[listIndex].tasks
+            .sort((a, b) => (a.id > b.id ? 1 : -1))
+            .map((todo) => {
+              return (
+                <ToDoItem
+                  key={todo.id + Math.random()}
+                  todo={todo}
+                  handleRebuilder={handleRebuilder}
+                  handleToggle={handleToggle}
+                  handleDelet={handleDelet}
+                  handleEdit={handleEdit}
+                  listIndex={listIndex}
+                />
+              );
+            })}
       </ul>
       <ListForm
         addTask={addTask}
         handleAdding={handleRebuilder}
-        listTitle={listTitle}
+        listIndex={listIndex}
       />
     </div>
   );

@@ -35,5 +35,12 @@
 }
 
 .list-menu-btn {
-  margin-right: 1.2rem;
+  margin-right: 1rem;
+  position: relative;
+  border-radius: 1rem;
+  padding: 0.2rem;
+}
+
+.list-menu-btn:hover {
+  background-color: #e1faf0;
 }

@@ -1,9 +1,3 @@
-/* .App {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-} */
-
 .todo-lists-wrapepr {
   display: flex;
   justify-content: center;
@@ -13,6 +7,7 @@
   overflow-x: auto;
   white-space: nowrap;
   width: 100%;
+  min-width: 100%;
 }
 
 /* ///// */

@@ -7,19 +7,18 @@ function ToDoItem({
   handleRebuilder,
   handleDelet,
   handleEdit,
-  listTitle,
+  listIndex,
 }) {
   const [doneStatus, setDoneStatus] = useState(todo.complete);
   const [deleteStatus, setDeleteStatus] = useState(false);
   const [editingStatus, setEditingStatus] = useState("nothing");
   const [userInput, setUserInput] = useState(todo.task);
-  // const [preEditText, setPreEditText] = useState(todo.task);
   let preEditText = todo.task;
 
   //Check as done/undone
   const clickDoneHendler = () => {
     doneStatus === true ? setDoneStatus(false) : setDoneStatus(true);
-    handleToggle(todo.id, !doneStatus, listTitle);
+    handleToggle(todo.id, !doneStatus, listIndex);
     handleRebuilder();
   };
 
@@ -28,7 +27,7 @@ function ToDoItem({
     if (deleteStatus === false) {
       setDeleteStatus(true);
     }
-    handleDelet(todo.id, listTitle);
+    handleDelet(todo.id, listIndex);
     handleRebuilder();
   };
 
@@ -43,7 +42,7 @@ function ToDoItem({
     } else if (editingStatus === "editing") {
       if (userInput.length !== 0) {
         setEditingStatus("nothing");
-        handleEdit(todo.id, userInput, listTitle);
+        handleEdit(todo.id, userInput, listIndex);
         handleRebuilder();
       }
     }
@@ -52,7 +51,7 @@ function ToDoItem({
   //Сancel edit
   const canselHendler = () => {
     setEditingStatus("nothing");
-    handleEdit(todo.id, preEditText, listTitle);
+    handleEdit(todo.id, preEditText, listIndex);
     setUserInput(preEditText);
     handleRebuilder();
   };
@@ -82,7 +81,6 @@ function ToDoItem({
           className={
             editingStatus === "editing" ? "done-btn btn none" : "done-btn btn"
           }
-          // className="done-btn btn"
           id="doneBtn"
           name="doneBtn"
           onClick={() => {
@@ -110,7 +108,6 @@ function ToDoItem({
           </div>
         ) : null}
         <div
-          // className="delete-btn btn"
           className={
             editingStatus === "editing"
               ? "delete-btn btn none"
